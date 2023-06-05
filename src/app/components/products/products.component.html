@@ -1,0 +1,36 @@
+<!-- <ul>
+  <li *ngFor="let product of allproduct">
+    <p>Name - {{ product.title }}</p>
+    <p>Category - {{ product.category }}</p>
+    <p>Description - {{ product.description }}</p>
+    <p>Price - {{ product.price }}</p>
+    <p><img width="100" src="{{ product.image }}" /></p>
+    <p>Product Rating{{ product.rating.rate }}</p>
+  </li>
+</ul> -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Image</th>
+      <th scope="col">Rating</th>
+      <th scope="col">View</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of allproduct">
+      <th scope="row">{{ product.title }}</th>
+      <td>{{ product.category }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.price }}</td>
+      <td><img width="100" src="{{ product.image }}" /></td>
+      <!-- <td>{{ product.rating.rate }}</td> -->
+      <td>
+        <a routerLink="/product/{{ product.id }}">View</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

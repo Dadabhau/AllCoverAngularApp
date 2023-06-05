@@ -1,0 +1,56 @@
+<!-- <ul>
+  <li *ngFor="let user of users">
+    <p>{{ user.email }}</p>
+    <p>{{ user.username }}</p>
+    <p>{{ user.phone }}</p>
+    <p>{{ user.address.city }}</p>
+    <p>{{ user.address.street }}</p>
+    <p>{{ user.address.number }}</p>
+    <p>{{ user.address.zipcode }}</p>
+  </li>
+</ul> -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {{ getMessage }}
+      <p><a href="" [routerLink]="['/adduser']">Add User</a></p>
+      <!-- <p><button (click)="logOut()" class="btn btn-primary">LogOut</button></p>
+      <p><button (click)="onLogin()" class="btn btn-primary">LogIn</button></p> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">User Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">View</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <th scope="row">{{ user.username }}</th>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>
+              <p>
+                {{ user.address.street }}, {{ user.address.number }},
+                {{ user.address.city }}, {{ user.address.zipcode }}
+              </p>
+            </td>
+            <td><a [routerLink]="['/user', user.id]">View</a></td>
+            <td><a [routerLink]="['/user', user.id, 'edit']">Edit</a></td>
+            <td>
+              <a (click)="removeUser(user.id)">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

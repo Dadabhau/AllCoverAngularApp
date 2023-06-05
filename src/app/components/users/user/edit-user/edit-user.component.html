@@ -1,0 +1,180 @@
+<form
+  class="needs-validation g-3"
+  (ngSubmit)="onSubmit()"
+  #userEditForm="ngForm"
+  novalidate
+>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      [(ngModel)]="editUserForm.email"
+      aria-describedby="emailHelp"
+      required
+      email
+      #email="ngModel"
+    />
+    <div class="error" *ngIf="!email.valid && email.touched">
+      Please enter valid email
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      name="username"
+      [(ngModel)]="editUserForm.username"
+      required
+      #username="ngModel"
+    />
+    <div class="error" *ngIf="!username.valid && username.touched">
+      Please enter user name
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      [(ngModel)]="editUserForm.password"
+      required
+      #password="ngModel"
+    />
+    <div class="error" *ngIf="!password.valid && password.touched">
+      Please enter password
+    </div>
+  </div>
+  <div class="mb-3" ngModelGroup="name">
+    <div id="" class="form-text">Name</div>
+    <div class="row g-3">
+      <div class="col mb-3">
+        <label for="firstname" class="form-label">firstname</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstname"
+          name="firstname"
+          [(ngModel)]="editUserForm.firstname"
+          #firstname="ngModel"
+        />
+      </div>
+      <div class="col mb-3">
+        <label for="lastname" class="form-label">lastname</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          name="lastname"
+          [(ngModel)]="editUserForm.lastname"
+          #lastname="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="mb-3" ngModelGroup="address">
+    <div id="" class="form-text">Address</div>
+    <div class="row g-3">
+      <div class="col mb-3">
+        <label for="city" class="form-label">city</label>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          name="city"
+          [(ngModel)]="editUserForm.city"
+          #city="ngModel"
+        />
+      </div>
+      <div class="col mb-3">
+        <label for="street" class="form-label">street</label>
+        <input
+          type="text"
+          class="form-control"
+          id="street"
+          name="street"
+          [(ngModel)]="editUserForm.street"
+          #street="ngModel"
+        />
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col mb-3">
+        <label for="number" class="form-label">number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="number"
+          name="number"
+          [(ngModel)]="editUserForm.number"
+          #number="ngModel"
+        />
+      </div>
+
+      <div class="col mb-3">
+        <label for="zipcode" class="form-label">zipcode</label>
+        <input
+          type="text"
+          class="form-control"
+          id="zipcode"
+          name="zipcode"
+          [(ngModel)]="editUserForm.zipcode"
+          #zipcode="ngModel"
+        />
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col mb-3">
+        <label for="lat" class="form-label">lat</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lat"
+          name="lat"
+          [(ngModel)]="editUserForm.lat"
+          #lat="ngModel"
+        />
+      </div>
+
+      <div class="col mb-3">
+        <label for="long" class="form-label">long</label>
+        <input
+          type="text"
+          class="form-control"
+          id="long"
+          name="long"
+          [(ngModel)]="editUserForm.long"
+          #lang="ngModel"
+        />
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">phone</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="phone"
+        name="phone"
+        [(ngModel)]="editUserForm.phone"
+        #phone="ngModel"
+        required
+      />
+      <div class="error" *ngIf="!phone.valid && phone.touched">
+        Please enter phone
+      </div>
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="!userEditForm.valid"
+  >
+    Submit
+  </button>
+</form>
