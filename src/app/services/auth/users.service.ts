@@ -25,6 +25,10 @@ export class UsersService {
     return this.http.put<User[]>(`${this.apiUrl}/${id}`, body);
   }
 
+  addUser(body: any): Observable<User[]> {
+    return this.http.post<User[]>(`${this.apiUrl}`, body);
+  }
+
   deleteUser(id: any): Observable<User[]> {
     return this.http.delete<User[]>(`${this.apiUrl}/${id}`);
   }

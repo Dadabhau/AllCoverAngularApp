@@ -1,1 +1,375 @@
-<p>add-user works!</p>
+<div class="container">
+  <div class="row mt-3">
+    <form [formGroup]="addUserForm" (ngSubmit)="submitForm()">
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              formControlName="email"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('email')!.invalid &&
+                addUserForm.get('email')!.touched
+              "
+            >
+              <div *ngIf="addUserForm.get('email')!.hasError('required')">
+                Email is required.
+              </div>
+              <div
+                *ngIf="
+                  addUserForm.get('email')!.errors &&
+                  !addUserForm.get('email')!.hasError('required')
+                "
+              >
+                Invalid email format.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              formControlName="username"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('username')!.invalid &&
+                addUserForm.get('username')!.touched
+              "
+            >
+              <div *ngIf="addUserForm.get('username')!.hasError('required')">
+                Username is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              formControlName="password"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('password')!.invalid &&
+                addUserForm.get('password')!.touched
+              "
+            >
+              <div *ngIf="addUserForm.get('password')!.hasError('required')">
+                Password is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3"></div>
+        </div>
+      </div>
+      <div class="row" formGroupName="name">
+        <div class="col">
+          <div class="mb-3">
+            <label for="firstname" class="form-label">Firstname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              formControlName="firstname"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('name.firstname')!.invalid &&
+                addUserForm.get('name.firstname')!.touched
+              "
+            >
+              <div
+                *ngIf="addUserForm.get('name.firstname')!.hasError('required')"
+              >
+                First Name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="lastname" class="form-label">Lastname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              formControlName="lastname"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('name.lastname')!.invalid &&
+                addUserForm.get('name.lastname')!.touched
+              "
+            >
+              <div
+                *ngIf="addUserForm.get('name.lastname')!.hasError('required')"
+              >
+                Last Name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="address">
+        <div class="col">
+          <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              formControlName="city"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('address.city')!.invalid &&
+                addUserForm.get('address.city')!.touched
+              "
+            >
+              <div
+                *ngIf="addUserForm.get('address.city')!.hasError('required')"
+              >
+                City is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="street" class="form-label">Street</label>
+            <input
+              type="text"
+              class="form-control"
+              id="street"
+              formControlName="street"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('address.street')!.invalid &&
+                addUserForm.get('address.street')!.touched
+              "
+            >
+              <div
+                *ngIf="addUserForm.get('address.street')!.hasError('required')"
+              >
+                Street is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="address">
+        <div class="col">
+          <div class="mb-3">
+            <label for="number" class="form-label">Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="number"
+              formControlName="number"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('address.number')!.invalid &&
+                addUserForm.get('address.number')!.touched
+              "
+            >
+              <div
+                *ngIf="addUserForm.get('address.number')!.hasError('required')"
+              >
+                Number is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="zipcode" class="form-label">Zipcode</label>
+            <input
+              type="text"
+              class="form-control"
+              id="zipcode"
+              formControlName="zipcode"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('address.zipcode')!.invalid &&
+                addUserForm.get('address.zipcode')!.touched
+              "
+            >
+              <div
+                *ngIf="addUserForm.get('address.zipcode')!.hasError('required')"
+              >
+                Zip Code is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div formGroupName="address">
+        <div class="row" formGroupName="geolocation">
+          <div class="col">
+            <div class="mb-3">
+              <label for="lat" class="form-label">Lat</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lat"
+                formControlName="lat"
+              />
+              <div
+                class="formError"
+                *ngIf="
+                  addUserForm.get('address.geolocation.lat')!.invalid &&
+                  addUserForm.get('address.geolocation.lat')!.touched
+                "
+              >
+                <div
+                  *ngIf="
+                    addUserForm
+                      .get('address.geolocation.lat')!
+                      .hasError('required')
+                  "
+                >
+                  Latitude is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mb-3">
+              <label for="long" class="form-label">Long</label>
+              <input
+                type="text"
+                class="form-control"
+                id="long"
+                formControlName="long"
+              />
+              <div
+                class="formError"
+                *ngIf="
+                  addUserForm.get('address.geolocation.long')!.invalid &&
+                  addUserForm.get('address.geolocation.long')!.touched
+                "
+              >
+                <div
+                  *ngIf="
+                    addUserForm
+                      .get('address.geolocation.long')!
+                      .hasError('required')
+                  "
+                >
+                  Longitude is required.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              formControlName="phone"
+            />
+            <div
+              class="formError"
+              *ngIf="
+                addUserForm.get('phone')!.invalid &&
+                addUserForm.get('phone')!.touched
+              "
+            >
+              <div *ngIf="addUserForm.get('phone')!.hasError('required')">
+                Phone is required.
+              </div>
+            </div>
+            <div
+              class="formError"
+              *ngIf="addUserForm!.invalid && addUserForm!.touched"
+            >
+              Form Invalid data.
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <div formArrayName="hobbies">
+              <div
+                *ngFor="let arrayElement of myArray.controls; let i = index"
+                [formGroupName]="i"
+              >
+                <label for="hobbies" class="form-label">Hobbies</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="hobbies"
+                  formControlName="hobbies"
+                />
+
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="removeArrayElement(i)"
+                >
+                  Remove Hobbies
+                </button>
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="addArrayElement()"
+              >
+                Add Hobbies
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3"></div>
+        </div>
+      </div>
+      <button
+        type="submit"
+        [disabled]="addUserForm!.invalid"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

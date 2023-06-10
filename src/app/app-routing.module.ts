@@ -11,8 +11,15 @@ import { UserComponent } from './components/users/user/user.component';
 import { AuthGuard } from './services/auth/auth-guard.service';
 import { ProductsResolverService } from './services/products/products-resolver.service';
 import { ProductResolverService } from './services/products/categories/product-resolver.service';
+import { HomeComponent } from './components/home/home.component';
+import { CanDeactivateGuard } from './components/home/can-deactivate-guard.service';
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canDeactivate: [CanDeactivateGuard],
+  },
   {
     path: 'categories',
     canActivate: [AuthGuard],

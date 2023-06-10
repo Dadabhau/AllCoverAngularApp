@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductsComponent } from './components/products/products.component';
@@ -19,6 +19,8 @@ import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './services/auth/auth-guard.service';
 import { ProductsResolverService } from './services/products/products-resolver.service';
 import { ProductResolverService } from './services/products/categories/product-resolver.service';
+import { HomeComponent } from './components/home/home.component';
+import { CanDeactivateGuard } from './components/home/can-deactivate-guard.service';
 
 @NgModule({
   declarations: [
@@ -34,11 +36,19 @@ import { ProductResolverService } from './services/products/categories/product-r
     UserComponent,
     EditUserComponent,
     AddUserComponent,
+    HomeComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+  ],
   providers: [
     AuthService,
     AuthGuard,
+    CanDeactivateGuard,
     ProductsResolverService,
     ProductResolverService,
   ],
