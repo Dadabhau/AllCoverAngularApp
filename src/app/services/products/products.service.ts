@@ -23,6 +23,11 @@ export class ProductsService {
       .pipe(catchError(this.handleError));
   }
 
+  sortProduct(sortParam: string): Observable<Product[]> {
+    return this.http
+      .get<Product[]>(`${this.apiUrl}?sort=${sortParam}`)
+      .pipe(catchError(this.handleError));
+  }
   // Handle API errors
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

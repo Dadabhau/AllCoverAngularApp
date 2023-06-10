@@ -8,6 +8,30 @@
     <p>Product Rating{{ product.rating.rate }}</p>
   </li>
 </ul> -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ul>
+        <li>
+          <a
+            [routerLink]="['/products']"
+            [queryParams]="{ sort: 'desc' }"
+            (click)="sortDesc()"
+            >DESC</a
+          >
+        </li>
+        <li>
+          <a
+            [routerLink]="['/products']"
+            [queryParams]="{ sort: 'asc' }"
+            (click)="sortDesc()"
+            >ASC</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 <table class="table">
   <thead>
     <tr>
