@@ -9,6 +9,7 @@ import { UsersService } from 'src/app/services/auth/users.service';
 })
 export class AddUserComponent implements OnInit {
   error: string;
+  hobbies: ['Learn Code'];
   addUserForm: FormGroup;
   constructor(private fb: FormBuilder, private userService: UsersService) {}
   ngOnInit(): void {
@@ -32,6 +33,34 @@ export class AddUserComponent implements OnInit {
       }),
       phone: ['', Validators.required],
       hobbies: this.fb.array([]),
+    });
+    setTimeout(() => {
+      this.addUserForm.setValue({
+        email: 'dadasthete@gmail.com',
+        username: 'dadabhau',
+        password: 'test@123',
+        name: {
+          firstname: 'Dadabhau',
+          lastname: 'Thete',
+        },
+        address: {
+          city: 'Pune',
+          street: 'Laxminagar',
+          number: '1234567890',
+          zipcode: '12345',
+          geolocation: {
+            lat: '2475876585685',
+            long: '98798657868',
+          },
+        },
+        phone: '43758437675685',
+        hobbies: '',
+      });
+    });
+    this.addUserForm.patchValue({
+      email: 'dadasthete987@gmail.com',
+      username: 'dada',
+      password: 'test@12356',
     });
   }
   get myArray(): FormArray {
