@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -21,6 +21,8 @@ import { ProductsResolverService } from './services/products/products-resolver.s
 import { ProductResolverService } from './services/products/categories/product-resolver.service';
 import { HomeComponent } from './components/home/home.component';
 import { CanDeactivateGuard } from './components/home/can-deactivate-guard.service';
+import { AuthInterceptorService } from './services/auth/auth-interceptor.service';
+import { LoggingInteceptorService } from './services/auth/logging-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -47,10 +49,23 @@ import { CanDeactivateGuard } from './components/home/can-deactivate-guard.servi
   ],
   providers: [
     AuthService,
+    // Added Guard Here
     AuthGuard,
     CanDeactivateGuard,
     ProductsResolverService,
     ProductResolverService,
+    // Added Interceptor
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInteceptorService,
+      multi: true,
+    },
+    // Added Multiple Interceptor
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

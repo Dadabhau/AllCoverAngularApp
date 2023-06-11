@@ -11,6 +11,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class ProductsComponent implements OnInit {
   allproduct: Product[] = [];
   error = null;
+
+  // Get Sort param type
   sortParam: Params;
   constructor(
     private productService: ProductsService,
@@ -18,14 +20,17 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.fetchAllProduct();
+    // Resolver Variable get from Param
     this.allproduct = this.actRoute.snapshot.data['products'];
+
+    // Get Sort Param from URL
     this.actRoute.queryParams.subscribe((param) => {
       this.sortParam = param;
     });
     console.log(this.allproduct, this.sortParam);
   }
 
+  // Get All Product call
   fetchAllProduct() {
     this.productService.getAllProducts().subscribe(
       (resp: Product[]) => {
@@ -38,6 +43,8 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
+
+  // Get product sort with Param
   sortDesc() {
     this.productService.sortProduct(this.sortParam.sort).subscribe(
       (resp: Product[]) => {
