@@ -16,6 +16,11 @@ import { CanDeactivateGuard } from './components/home/can-deactivate-guard.servi
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   {
+    path: 'login',
+    component: LoginComponent,
+    data: { showHeader: false },
+  },
+  {
     path: 'home',
     component: HomeComponent,
     canDeactivate: [CanDeactivateGuard],

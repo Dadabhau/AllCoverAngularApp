@@ -1,38 +1,55 @@
 <div class="container">
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex align-items-center justify-content-center">
     <div
-      class="col col-md-4 d-flex flex-column min-vh-100 justify-content-center align-items-center"
+      class="col col-md-12 d-flex flex-column min-vh-100 justify-content-center align-items-center"
     >
-      <form>
+      <div *ngIf="isLoading"><app-loadingspinner></app-loadingspinner></div>
+      <form
+        #authForm="ngForm"
+        (ngSubmit)="onSubmit(authForm)"
+        *ngIf="!isLoading"
+      >
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
+          <label for="username" class="form-label">Username</label>
           <input
-            type="email"
+            type="text"
             class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="username"
+            ngModel
+            name="username"
+            required
           />
-          <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
-          </div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label for="password" class="form-label">Password</label>
           <input
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="password"
+            name="password"
+            ngModel
+            required
           />
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >Check me out</label
-          >
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!authForm.valid"
+        >
+          Login
+          <!-- {{ isLoginMode ? "Login" : "Sign Up" }} -->
+        </button>
+        <!-- |
+        <button type="button" class="btn btn-primary" (click)="onSwitchMode()">
+          Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
+        </button> -->
+        <p>username: "mor_2314", password: "83r5^_"</p>
+        <div
+          *ngIf="errorShow"
+          class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3"
+        >
+          {{ error }}
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
   </div>

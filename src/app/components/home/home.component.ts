@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit, CanComponentDectivate, OnDestroy {
   changeRoute() {
     this.alloEdit = true;
   }
+  // Call CANDEACTIVE GUARD
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.alloEdit) {
       return false;

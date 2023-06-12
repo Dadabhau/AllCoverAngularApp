@@ -23,6 +23,8 @@ import { HomeComponent } from './components/home/home.component';
 import { CanDeactivateGuard } from './components/home/can-deactivate-guard.service';
 import { AuthInterceptorService } from './services/auth/auth-interceptor.service';
 import { LoggingInteceptorService } from './services/auth/logging-interceptor.service';
+import { LoadingspinnerComponent } from './shared/loadingspinner/loadingspinner.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { LoggingInteceptorService } from './services/auth/logging-interceptor.se
     EditUserComponent,
     AddUserComponent,
     HomeComponent,
+    LoadingspinnerComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
